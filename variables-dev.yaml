@@ -3,3 +3,4 @@ login_host: db-dev.avyan.site
 login_password: ExpenseApp1
 DB_HOST: db-dev.avyan.site
 BACKEND_API_URL: backend.app-dev.avyan.site
+nexus_url: nexus.avyan.site

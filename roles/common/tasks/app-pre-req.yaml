@@ -13,8 +13,15 @@
     path: "{{ app_location }}"
     state: directory
 
-- name: download and extract code
+# - name: download and extract code
+#   ansible.builtin.unarchive:
+#     src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+#     dest: "{{ app_location }}"
+#     remote_src: yes
+
+#comment above code as now we are getting artifact from Nexus URL and not from S3 bucket
+- name: download the artifact from nexus
   ansible.builtin.unarchive:
-    src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+    src: "http://{{ nexus_url }}:8081/repository/{{ component }}/com/expense/{{ component }}/{{ appVersion }}/{{ component }}-{{ appVersion }}.zip"
     dest: "{{ app_location }}"
     remote_src: yes
